@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigazone Dynamics | Microsoft AI Partner | Professional IT Solutions</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --neon-green: #33ff33;
+            --dark-green: #00aa00;
+            --electric-blue: #00ffff;
+            --hot-pink: #ff00ff;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #444444;
+            --white: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', 'Exo 2', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--neon-green);
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--neon-green);
+            margin: 20px auto 0;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--neon-green);
+            color: var(--black);
+            box-shadow: 0 0 15px rgba(51, 255, 51, 0.5);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(51, 255, 51, 0.7);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(51, 255, 51, 0.1);
+            box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(51, 255, 51, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 5px 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--neon-green);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            background: 
+                linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)),
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--black) 70%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--dark-gray);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--black);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(51, 255, 51, 0.1);
+            border-color: var(--neon-green);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: var(--medium-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--neon-green);
+            font-size: 3rem;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+        }
+        
+        /* Microsoft Partnership */
+        .partnership {
+            background: 
+                linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+                url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop') no-repeat center center/cover;
+            text-align: center;
+            position: relative;
+        }
+        
+        .partnership::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(51, 255, 51, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+        
+        .partnership .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .partner-badge {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(51, 255, 51, 0.5);
+        }
+        
+        .partner-badge img {
+            width: 70%;
+        }
+        
+        .partner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .partner-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: var(--neon-green);
+            font-weight: 600;
+        }
+        
+        /* Software Development */
+        .software {
+            background-color: var(--dark-gray);
+        }
+        
+        .software-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--white);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .tab-btn.active,
+        .tab-btn:hover {
+            background-color: var(--neon-green);
+            color: var(--black);
+            border-color: var(--neon-green);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .software-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--black);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-green);
+        }
+        
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: var(--black);
+        }
+        
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--white);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--neon-green);
+            color: var(--black);
+            border-color: var(--neon-green);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(51, 255, 51, 0.1);
+            border-color: var(--neon-green);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: var(--medium-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-category {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: rgba(51, 255, 51, 0.2);
+            color: var(--neon-green);
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark-gray);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--neon-green);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            background-color: var(--black);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--dark-gray);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(51, 255, 51, 0.3);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            padding: 50px 0 20px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--neon-green);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 15px;
+            background-color: var(--dark-gray);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px 0 0 4px;
+            color: var(--white);
+        }
+        
+        .newsletter-btn {
+            padding: 10px 15px;
+            background-color: var(--neon-green);
+            color: var(--black);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--black);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .partner-badge {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/200x50/33ff33/000000?text=Gigazone+Dynamics" alt="Gigazone Dynamics Logo">
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#partnership">Partnership</a></li>
+                    <li><a href="#software">Software</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transforming Businesses with <span>Innovative IT Solutions</span></h1>
+                <p>Since 2014, Gigazone Dynamics has been delivering cutting-edge technology solutions, from hardware sales to custom software development. As a Microsoft AI Development Partner, we bring enterprise-grade solutions to businesses of all sizes.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Gigazone Dynamics</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Your Trusted Technology Partner</h2>
+                    <p>Founded in 2014, Gigazone Dynamics began as a local IT equipment retailer and repair service. Through dedication to quality and innovation, we've evolved into a full-service technology solutions provider with Microsoft AI partnership recognition.</p>
+                    <p>Our journey reflects our commitment to growth and technological advancement, positioning us uniquely to serve both established businesses and ambitious startups.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h4>Microsoft AI Partner</h4>
+                                <p>Selected among top 3-7% of applicants worldwide for our technical expertise</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4>Client-Centric Approach</h4>
+                                <p>Custom solutions tailored to your specific business challenges and goals</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div>
+                                <h4>End-to-End Solutions</h4>
+                                <p>From hardware to custom software - comprehensive technology services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Gigazone Dynamics Team">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Professional Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>IT Equipment Sales</h3>
+                        <p>We provide top-tier hardware solutions from leading manufacturers, configured to your exact specifications. Our inventory includes workstations, servers, networking equipment, and peripherals.</p>
+                        <ul>
+                            <li>Custom-built systems</li>
+                            <li>Enterprise-grade hardware</li>
+                            <li>Genuine software licenses</li>
+                            <li>Bulk purchase discounts</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Request Quote</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Repair Services</h3>
+                        <p>Our certified technicians provide expert repair services for all major brands. We offer component-level repairs with a 90-day warranty on all work performed.</p>
+                        <ul>
+                            <li>Diagnostics and troubleshooting</li>
+                            <li>Data recovery services</li>
+                            <li>Screen and component replacements</li>
+                            <li>On-site corporate support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Book Appointment</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Digital Design</h3>
+                        <p>Elevate your brand with our professional design services. We create visually stunning assets that communicate your brand identity effectively.</p>
+                        <ul>
+                            <li>Brand identity and logos</li>
+                            <li>UI/UX design</li>
+                            <li>Marketing collateral</li>
+                            <li>Social media assets</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Start Project</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Bookkeeping Services</h3>
+                        <p>Our financial experts provide accurate, timely bookkeeping services using the latest accounting software, tailored to your business needs.</p>
+                        <ul>
+                            <li>Accounts payable/receivable</li>
+                            <li>Payroll processing</li>
+                            <li>Financial reporting</li>
+                            <li>Tax preparation support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Microsoft Partnership -->
+    <section class="partnership section" id="partnership">
+        <div class="container">
+            <h2 class="section-title">Microsoft AI Development Partner</h2>
+            
+            <div class="partner-badge">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo">
+            </div>
+            
+            <div class="partner-content">
+                <p>Gigazone Dynamics is honored to be selected as a <span class="highlight">Microsoft AI Development Partner</span>, a distinction awarded to only <span class="highlight">3-7% of applicants</span> worldwide. This partnership recognizes our technical expertise and commitment to delivering innovative AI-powered solutions.</p>
+                
+                <p>Our collaboration with Microsoft provides access to cutting-edge AI technologies, including Azure Cognitive Services and Machine Learning platforms, enabling us to build sophisticated solutions that drive business transformation.</p>
+                
+                <p>As part of this elite program, we receive early access to Microsoft's AI roadmap, specialized training, and co-marketing opportunities that benefit our clients through enhanced solution capabilities.</p>
+                
+                <a href="#software" class="btn btn-primary" style="margin-top: 30px;">Explore Our AI Solutions</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Software Development -->
+    <section class="software section" id="software">
+        <div class="container">
+            <h2 class="section-title">Custom Software Solutions</h2>
+            
+            <div class="software-tabs">
+                <button class="tab-btn active" data-tab="business">Business Solutions</button>
+                <button class="tab-btn" data-tab="ai">AI Applications</button>
+                <button class="tab-btn" data-tab="custom">Custom Development</button>
+            </div>
+            
+            <div class="tab-content active" id="business-tab">
+                <div class="software-features">
+                    <div class="feature-card">
+                        <h4>Enterprise Resource Planning</h4>
+                        <p>Streamline operations with custom ERP systems integrating inventory, accounting, HR, and CRM functions tailored to your workflows.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Customer Relationship Management</h4>
+                        <p>Build lasting customer relationships with CRM systems designed around your sales process and customer journey.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Inventory Management</h4>
+                        <p>Real-time tracking, automated reordering, and predictive analytics for optimal stock levels across multiple locations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Business Process Automation</h4>
+                        <p>Eliminate manual tasks with automated workflows that reduce errors and accelerate operations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="ai-tab">
+                <div class="software-features">
+                    <div class="feature-card">
+                        <h4>Predictive Analytics</h4>
+                        <p>Leverage historical data to forecast trends, customer behavior, and market shifts with Microsoft AI.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Natural Language Processing</h4>
+                        <p>Implement chatbots, document analysis, and sentiment analysis to enhance customer interactions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Computer Vision</h4>
+                        <p>Image recognition solutions for quality control, security, and inventory management applications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Anomaly Detection</h4>
+                        <p>Identify unusual patterns in transactions, network traffic, or equipment performance for early intervention.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="custom-tab">
+                <div class="software-features">
+                    <div class="feature-card">
+                        <h4>Tailored Development</h4>
+                        <p>From concept to deployment, we build solutions that address your unique challenges and opportunities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Legacy System Modernization</h4>
+                        <p>Breathe new life into outdated systems with modern architectures and cloud integration.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>API Integration</h4>
+                        <p>Connect disparate systems and data sources to create seamless workflows across your organization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Mobile Applications</h4>
+                        <p>Extend your capabilities to smartphones and tablets with responsive, platform-specific apps.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="btn btn-primary">Request Software Consultation</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products section" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="products-filter">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="hardware">Hardware</button>
+                <button class="filter-btn" data-filter="software">Software</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-category="hardware">
+                    <div class="product-img">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Hardware</span>
+                        <h3>GigaPro Workstation</h3>
+                        <p>High-performance business desktop with Intel Core i9 processor and NVIDIA RTX graphics</p>
+                        <div class></div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-secondary" style="padding: 8px 15px;">Details</a>
+                            <a href="#" class="btn btn-primary" style="padding: 8px 15px;">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="hardware">
+                    <div class="product-img">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Hardware</span>
+                        <h3>Enterprise Server</h3>
+                        <p>Dual Xeon processor rack server with 128GB RAM and hardware RAID</p>
+                        <div class></div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-secondary" style="padding: 8px 15px;">Details</a>
+                            <a href="#" class="btn btn-primary" style="padding: 8px 15px;">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="software">
+                    <div class="product-img">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <div class="
